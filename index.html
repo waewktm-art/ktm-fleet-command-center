@@ -96,8 +96,7 @@ th{
 
 </div>
 
-<input class="search" placeholder="ค้นหาทะเบียนรถ">
-
+<input id="searchBox" class="search" placeholder="ค้นหาทะเบียนรถ">   
 <table>
 <thead>
 <tr>
@@ -107,7 +106,7 @@ th{
 </tr>
 </thead>
 
-<tbody>
+<tbody id="vehicleTable">
 <tr>
 <td>88-9275</td>
 <td>นครราชสีมา</td>
@@ -130,6 +129,28 @@ th{
 </table>
 
 </div>
+<script>
+const searchBox = document.getElementById('searchBox');
 
+searchBox.addEventListener('keyup', function() {
+
+    let keyword = this.value.toLowerCase();
+
+    let rows = document.querySelectorAll('#vehicleTable tr');
+
+    rows.forEach(row => {
+
+        let reg = row.cells[0].innerText.toLowerCase();
+
+        if(reg.includes(keyword)){
+            row.style.display = '';
+        }else{
+            row.style.display = 'none';
+        }
+
+    });
+
+});
+</script>
 </body>
 </html>
