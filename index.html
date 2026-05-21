@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KTM Fleet Command Center</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f6f9;
+}
+
+header{
+    background:#c8102e;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+    padding:20px;
+}
+
+.cards{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    min-width:220px;
+}
+
+.number{
+    font-size:32px;
+    font-weight:bold;
+    color:#c8102e;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    margin-top:20px;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:10px;
+}
+
+th{
+    background:#c8102e;
+    color:white;
+}
+
+.search{
+    margin-top:20px;
+    padding:10px;
+    width:300px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>KTM Fleet Command Center</h1>
+<p>ระบบบริหารจัดการยานพาหนะ บริษัท เค.ที.เอ็ม. สตีล จำกัด</p>
+</header>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<h3>รถทั้งหมด</h3>
+<div class="number">51</div>
+</div>
+
+<div class="card">
+<h3>รถพร้อมใช้งาน</h3>
+<div class="number">51</div>
+</div>
+
+<div class="card">
+<h3>รถซ่อมอยู่</h3>
+<div class="number">0</div>
+</div>
+
+</div>
+
+<input class="search" placeholder="ค้นหาทะเบียนรถ">
+
+<table>
+<thead>
+<tr>
+<th>ทะเบียน</th>
+<th>จังหวัด</th>
+<th>สถานะ</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>88-9275</td>
+<td>นครราชสีมา</td>
+<td>พร้อมใช้งาน</td>
+</tr>
+
+<tr>
+<td>88-9279</td>
+<td>นครราชสีมา</td>
+<td>พร้อมใช้งาน</td>
+</tr>
+
+<tr>
+<td>89-4864</td>
+<td>นครราชสีมา</td>
+<td>พร้อมใช้งาน</td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
+
+</body>
+</html>
