@@ -129,28 +129,87 @@ th{
 </table>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-const searchBox = document.getElementById('searchBox');
 
-searchBox.addEventListener('keyup', function() {
+const SUPABASE_URL =
+'https://oczwqlwsqqaprsasxmnq.supabase.co';
 
-    let keyword = this.value.toLowerCase();
+const SUPABASE_KEY =
+'sb_publishable_2SRy0z_koXAfEZkHRCeMGw_2UaqKfpp';
 
-    let rows = document.querySelectorAll('#vehicleTable tr');
+const supabaseClient =
+supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-    rows.forEach(row => {
+const tableBody =
+document.getElementById('vehicleTable');
 
-        let reg = row.cells[0].innerText.toLowerCase();
+const searchBox =
+document.getElementById('searchBox');
 
-        if(reg.includes(keyword)){
-            row.style.display = '';
-        }else{
-            row.style.display = 'none';
-        }
+async function loadVehicles() {
+
+    const { data, error } = await supabaseClient
+        .from('vehicles')
+        .select('*')
+        .order('RegNo');
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    tableBody.innerHTML = '';
+
+    data.forEach(vehicle => {
+
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${vehicle.RegNo || ''}</td>
+            <td>${vehicle.RegProvince || ''}</td>
+            <td>พร้อมใช้งาน</td>
+        `;
+
+        tableBody.appendChild(row);
 
     });
 
-});
+    document.querySelectorAll('.number')[0].innerText = data.length;
+    document.querySelectorAll('.number')[1].innerText = data.length;
+
+    enableSearch();
+
+}
+
+function enableSearch() {
+
+    searchBox.addEventListener('keyup', function() {
+
+        const keyword = this.value.toLowerCase();
+
+        const rows =
+        document.querySelectorAll('#vehicleTable tr');
+
+        rows.forEach(row => {
+
+            const reg =
+            row.cells[0].innerText.toLowerCase();
+
+            row.style.display =
+            reg.includes(keyword)
+            ? ''
+            : 'none';
+
+        });
+
+    });
+
+}
+
+loadVehicles();
+
 </script>
 </body>
 </html>
